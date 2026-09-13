@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scuffathon Verify — Choose a method</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="css/chaos.css" />
+</head>
+<body>
+  <div class="top-bar"></div>
+
+  <div class="verify-layout">
+    <!-- Left / main column: the Okta-style verify panel -->
+    <div class="login-wrap">
+      <p class="page-heading">Sign in to your account</p>
+
+      <svg class="crest" viewBox="0 0 200 232" role="img" aria-label="Scuffathon crest" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100,8 C70,22 40,24 22,20 L22,95 C22,150 58,190 100,213 C142,190 178,150 178,95 L178,20 C160,24 130,22 100,8 Z"
+              fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round" />
+        <path d="M100,18 C73,30 45,32 31,29 L31,93 C31,143 63,179 100,200 C137,179 169,143 169,93 L169,29 C155,32 127,30 100,18 Z"
+              fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+        <path d="M100,80 L106.6,99 L126.7,99.4 L110.6,111.5 L116.5,130.7 L100,119.2 L83.5,130.7 L89.4,111.5 L73.3,99.4 L93.4,99 Z"
+              fill="#fff" />
+      </svg>
+
+      <h1 class="verify-title">Verify it's you with a security method</h1>
+      <p class="verify-user" id="verify-user"></p>
+
+      <!-- Before Select -->
+      <div id="method-stage">
+        <p class="methods-label">Select from the following options</p>
+        <div class="method">
+          <div class="method-icon accent">&#10003;</div>
+          <div class="method-body">
+            <div class="method-title">Verify with Okta UNVerify</div>
+          </div>
+          <button class="btn-select" id="select-btn">Select</button>
+        </div>
+      </div>
+
+      <!-- After Select -->
+      <p class="phone-hint" id="phone-hint" hidden>Complete the verification request on your device.</p>
+
+      <a class="back-link" id="back-link">Back to sign in</a>
+    </div>
+
+    <!-- Right column: the phone, revealed after Select -->
+    <div class="phone" id="phone" hidden>
+      <div class="phone-notch"></div>
+      <iframe id="phone-screen" title="Verification request"></iframe>
+    </div>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/chaos.js"></script>
+  <script src="js/verify-select.js"></script>
+</body>
+</html>

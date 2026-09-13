@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scuffathon Verify — Mini Crossword</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="card wide text-center">
+    <div class="progress-dots" style="justify-content:center">
+      <div class="dot done" id="dot-1"></div>
+      <div class="dot active" id="dot-2"></div>
+    </div>
+
+    <div class="lives-row" style="justify-content:center"><span class="label">Lives</span><span id="lives-display"></span></div>
+
+    <h1>Today's mini</h1>
+    <p class="subtitle">Fill the whole grid correctly to continue.</p>
+
+    <div class="crossword-grid" id="crossword-grid"></div>
+
+    <div class="clue-columns">
+      <div class="clue-col">
+        <h2>Across</h2>
+        <div id="across-clues"></div>
+      </div>
+      <div class="clue-col">
+        <h2>Down</h2>
+        <div id="down-clues"></div>
+      </div>
+    </div>
+
+    <button id="submit-btn">Check Puzzle</button>
+    <div class="message" id="cw-message"></div>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/crossword-data.js"></script>
+  <script src="js/crossword-engine.js"></script>
+  <script src="js/lives.js"></script>
+  <script src="js/verify-crossword.js"></script>
+</body>
+</html>

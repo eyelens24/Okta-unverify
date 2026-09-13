@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scuffathon Verify — Security Challenge</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="progress-dots">
+      <div class="dot active" id="dot-1"></div>
+      <div class="dot" id="dot-2"></div>
+    </div>
+
+    <div class="lives-row"><span class="label">Lives</span><span id="lives-display"></span></div>
+
+    <h1>Prove you're human (ish)</h1>
+    <p class="subtitle">Evaluate the definite integral below and enter the result.</p>
+
+    <div class="puzzle-box" id="puzzle-box">Loading challenge…</div>
+
+    <form id="answer-form">
+      <label for="answer">Your answer</label>
+      <input type="text" id="answer" inputmode="decimal" placeholder="e.g. 12.5" autocomplete="off" required />
+      <div class="hint">Decimals are fine — you don't need to be exact to the last digit.</div>
+
+      <button type="submit" id="submit-btn">Verify</button>
+      <div class="message" id="answer-message"></div>
+    </form>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/integral.js"></script>
+  <script src="js/lives.js"></script>
+  <script src="js/verify-integral.js"></script>
+</body>
+</html>

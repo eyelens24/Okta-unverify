@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scuffathon Verify — Verified</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!--
+    TODO / HANDOFF NOTE (planned feature, not built yet):
+    This is the "after the last puzzle" screen. The idea is to show the 6-digit
+    code you'd actually use to log into your own account here — but keep it
+    HIDDEN behind a "reveal" control. When the user tries to unhide/reveal it,
+    pop up a FAKE in-page payment page (a joke paywall, all client-side — it
+    must NOT collect real card details or impersonate a real payment provider;
+    keep it obviously fake). Only after "paying" does the 6-digit code reveal.
+    Where to build it: add the hidden code + reveal button in this card, and a
+    fake-payment overlay (similar pattern to the QTE overlay in js/chaos.js).
+  -->
+  <div class="card text-center">
+    <div class="center-icon">✅</div>
+    <h1>You're verified</h1>
+    <p class="subtitle" id="welcome-text">Welcome.</p>
+
+    <button id="logout-btn">Log out</button>
+    <div class="message" id="home-message"></div>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

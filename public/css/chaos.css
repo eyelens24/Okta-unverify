@@ -1,0 +1,168 @@
+/* Chaos layer: annoying ads, quick-time events, and jumpscares that overlay
+   the whole verification screen. All fixed-position, high z-index. */
+
+.chaos-ad {
+  position: fixed;
+  z-index: 9000;
+  width: 240px;
+  padding: 14px 12px 16px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff2d95, #ffd200);
+  color: #10131a;
+  font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+  font-weight: 800;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  border: 3px solid #fff;
+  cursor: pointer;
+  animation: chaos-ad-blink 0.7s steps(2, jump-none) infinite;
+  user-select: none;
+}
+
+@keyframes chaos-ad-blink {
+  0% { border-color: #fff; }
+  100% { border-color: #00e5ff; }
+}
+
+.chaos-ad-tag {
+  font-size: 10px;
+  opacity: 0.7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.chaos-ad-headline {
+  font-size: 17px;
+  line-height: 1.2;
+  margin: 6px 0;
+}
+
+.chaos-ad-sub {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Deliberately tiny, slightly inset close button — easy to miss. */
+.chaos-ad-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+  line-height: 12px;
+  font-size: 10px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/* ---- Quick-time event ---- */
+.chaos-qte-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: rgba(4, 6, 16, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.chaos-qte {
+  width: 320px;
+  max-width: 100%;
+  background: #10131f;
+  border: 2px solid #45c2e8;
+  border-radius: 14px;
+  padding: 24px 22px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.chaos-qte.shake {
+  animation: chaos-shake 0.35s;
+}
+
+@keyframes chaos-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-8px); }
+  80% { transform: translateX(8px); }
+}
+
+.chaos-qte-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.chaos-qte-instr {
+  font-size: 14px;
+  color: #cdd6f0;
+  margin-bottom: 16px;
+}
+
+.chaos-qte-bar {
+  height: 16px;
+  border-radius: 8px;
+  background: #262b3d;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.chaos-qte-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #45c2e8, #2ba7cd);
+  transition: width 0.08s ease;
+}
+
+.chaos-qte-count {
+  font-size: 13px;
+  color: #9be8b6;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.chaos-qte-timer {
+  color: #ff9a9a;
+}
+
+.chaos-qte-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #45c2e8;
+  color: #051022;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  user-select: none;
+}
+
+.chaos-qte-btn:active {
+  transform: scale(0.97);
+}
+
+/* ---- Jumpscare ---- */
+.chaos-scare {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  width: 42vw;
+  max-width: 460px;
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.6));
+}
+
+.chaos-scare-emoji {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+  font-size: 30vw;
+  line-height: 1;
+}

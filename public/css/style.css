@@ -1,0 +1,368 @@
+:root {
+  --bg: #0f1729;
+  --card-bg: #ffffff;
+  --accent: #2d5bff;
+  --accent-dark: #1c3fcc;
+  --text-dark: #14213d;
+  --text-muted: #6b7280;
+  --error: #d64545;
+  --success: #1f9d55;
+  --border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(circle at top, #1a2540, var(--bg));
+  color: var(--text-dark);
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  padding: 36px 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), #7c3aed);
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-dark);
+  letter-spacing: 0.2px;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+.progress-dots {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.dot.active {
+  background: var(--accent);
+}
+
+.dot.done {
+  background: var(--success);
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-dark);
+}
+
+input[type='text'],
+input[type='password'] {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 18px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+input[type='text']:focus,
+input[type='password']:focus {
+  border-color: var(--accent);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+button:hover {
+  background: var(--accent-dark);
+}
+
+button:disabled {
+  background: var(--border);
+  cursor: not-allowed;
+}
+
+.message {
+  margin-top: 14px;
+  font-size: 13px;
+  min-height: 18px;
+}
+
+.message.error {
+  color: var(--error);
+}
+
+.message.success {
+  color: var(--success);
+}
+
+.puzzle-box {
+  background: #f4f6fb;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+  color: var(--text-dark);
+  letter-spacing: 0.3px;
+}
+
+.puzzle-box sup {
+  font-size: 0.7em;
+}
+
+.hint {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 18px;
+}
+
+.center-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(31, 157, 85, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 28px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  width: auto;
+  margin-top: 12px;
+}
+
+.link-btn:hover {
+  background: none;
+  text-decoration: underline;
+}
+
+.card.wide {
+  max-width: 460px;
+}
+
+.lives-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
+  font-size: 18px;
+}
+
+.lives-row .label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-right: 4px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.crossword-grid {
+  display: grid;
+  gap: 4px;
+  margin: 0 auto 20px;
+  width: fit-content;
+}
+
+.cw-cell {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.cw-cell.black {
+  background: var(--text-dark);
+  border-color: var(--text-dark);
+}
+
+.cw-cell input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  background: transparent;
+}
+
+.cw-cell input.active {
+  background: #dce6ff;
+}
+
+.cw-cell input.in-word {
+  background: #eef2fb;
+}
+
+.cw-cell input.active.in-word {
+  background: #dce6ff;
+}
+
+.cw-num {
+  position: absolute;
+  top: 1px;
+  left: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.clue-columns {
+  display: flex;
+  gap: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.clue-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.clue-col h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+}
+
+.clue-item {
+  font-size: 13px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  line-height: 1.35;
+}
+
+.clue-item:hover {
+  background: #f4f6fb;
+}
+
+.clue-item.active {
+  background: #dce6ff;
+  font-weight: 600;
+}
+
+/* Narrow viewport (e.g. running inside the phone mockup's iframe): shrink the
+   crossword and card so everything fits without horizontal scroll. */
+@media (max-width: 360px) {
+  body {
+    padding: 10px;
+  }
+  .card {
+    padding: 18px 12px;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+  h1 {
+    font-size: 17px;
+  }
+  .subtitle {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+  .puzzle-box {
+    font-size: 17px;
+    padding: 14px;
+  }
+  .crossword-grid {
+    gap: 3px;
+  }
+  .cw-cell {
+    width: 44px;
+    height: 44px;
+  }
+  .cw-cell input {
+    font-size: 18px;
+  }
+  .clue-columns {
+    gap: 10px;
+  }
+  .clue-col h2 {
+    font-size: 11px;
+  }
+  .clue-item {
+    font-size: 11px;
+    padding: 3px 4px;
+  }
+  button {
+    padding: 10px;
+  }
+}
