@@ -23,6 +23,7 @@
   ];
 
   const MAX_QTE = 5; // the mash popup appears at most this many times
+  const MAX_ADS = 2; // at most this many ads on screen at once
 
   let running = false;
   let adTimer = null;
@@ -30,6 +31,7 @@
   let qteActive = false;
   let qteShown = 0;
   const ads = new Set();
+  let adBackdrop = null; // blocks clicks on everything else while an ad is up
 
   function rand(min, max) {
     return Math.random() * (max - min) + min;
@@ -74,10 +76,50 @@
     el.style.top = rand(0, maxTop) + 'px';
   }
 
+  // ---- "HAHA BOZO" taunt ----
+  // A quick floating taunt near wherever an ad just teleported to.
+  function showBozo(x, y) {
+    const el = document.createElement('div');
+    el.className = 'chaos-bozo';
+    el.textContent = 'HAHA BOZO';
+    const w = 200;
+    const left = Math.min(Math.max(4, x - w / 2), window.innerWidth - w - 4);
+    const top = Math.min(Math.max(4, y), window.innerHeight - 40);
+    el.style.left = left + 'px';
+    el.style.top = top + 'px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 650);
+  }
+
   // ---- Ads ----
+  // While any ad is on screen, a full-viewport backdrop (just under the ads'
+  // z-index) swallows clicks aimed at the puzzle behind it — you have to
+  // deal with the ad(s) first. Removed once the last ad is gone.
+  function syncAdBackdrop() {
+    if (ads.size > 0 && !adBackdrop) {
+      adBackdrop = document.createElement('div');
+      adBackdrop.className = 'chaos-ad-backdrop';
+      document.body.appendChild(adBackdrop);
+    } else if (ads.size === 0 && adBackdrop) {
+      adBackdrop.remove();
+      adBackdrop = null;
+    }
+  }
+
+  // Moves an ad to a fresh random spot and fires a "HAHA BOZO" taunt next to it.
+  function teleportAd(ad) {
+    const w = ad.offsetWidth || 240;
+    const h = ad.offsetHeight || 120;
+    const left = rand(8, Math.max(8, window.innerWidth - w - 8));
+    const top = rand(8, Math.max(8, window.innerHeight - h - 8));
+    ad.style.left = left + 'px';
+    ad.style.top = top + 'px';
+    showBozo(left + w / 2, Math.max(4, top - 26));
+  }
+
   function spawnAd() {
     if (!running) return;
-    if (ads.size < 4) {
+    if (ads.size < MAX_ADS) {
       const ad = document.createElement('div');
       ad.className = 'chaos-ad';
 
@@ -108,14 +150,20 @@
 
       document.body.appendChild(ad);
       ads.add(ad);
+      syncAdBackdrop();
+
+      // Keep teleporting around the screen (with a taunt) until closed.
+      ad._moveTimer = setInterval(() => teleportAd(ad), randInt(3500, 6000));
     }
 
-    adTimer = setTimeout(spawnAd, randInt(5000, 14000));
+    adTimer = setTimeout(spawnAd, randInt(10000, 18000));
   }
 
   function removeAd(ad) {
+    clearInterval(ad._moveTimer);
     ads.delete(ad);
     ad.remove();
+    syncAdBackdrop();
   }
 
   // ---- Quick-time events ----
@@ -198,15 +246,19 @@
     start() {
       if (running) return;
       running = true;
-      adTimer = setTimeout(spawnAd, randInt(4000, 9000));
+      adTimer = setTimeout(spawnAd, randInt(6000, 11000));
       qteTimer = setTimeout(spawnQTE, randInt(8000, 16000));
     },
     stop() {
       running = false;
       clearTimeout(adTimer);
       clearTimeout(qteTimer);
-      ads.forEach((ad) => ad.remove());
+      ads.forEach((ad) => {
+        clearInterval(ad._moveTimer);
+        ad.remove();
+      });
       ads.clear();
+      syncAdBackdrop();
     },
     jumpscare, // exposed for testing
   };

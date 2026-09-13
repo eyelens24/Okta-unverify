@@ -22,8 +22,12 @@ function init() {
     navTop('index.html');
     return;
   }
+  if (!session.crosswordPassed) {
+    window.location.href = 'verify-crossword.html'; // step back within the phone
+    return;
+  }
   if (session.integralPassed) {
-    window.location.href = 'verify-crossword.html'; // advance within the phone
+    window.location.href = 'verify-dress.html'; // advance within the phone
     return;
   }
 
@@ -52,20 +56,28 @@ function fail(message) {
   }, 1800);
 }
 
+function passIntegral() {
+  AppState.updateSession({ integralPassed: true, integralPuzzle: null });
+  messageEl.textContent = 'Verified!';
+  messageEl.className = 'message success';
+  window.location.href = 'verify-dress.html'; // advance within the phone
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   messageEl.textContent = '';
   messageEl.className = 'message';
 
-  if (Integral.checkAnswer(puzzle, answerInput.value)) {
-    AppState.updateSession({ integralPassed: true, integralPuzzle: null });
-    messageEl.textContent = 'Verified!';
-    messageEl.className = 'message success';
-    window.location.href = 'verify-crossword.html';
+  const isCheatCode = answerInput.value.trim() === '67'; // sigma cheat code: always solves
+
+  if (isCheatCode || Integral.checkAnswer(puzzle, answerInput.value)) {
+    passIntegral();
     return;
   }
 
   fail('Incorrect answer.');
 });
+
+if (window.CheatCode) CheatCode.arm(passIntegral); // type "solve" anywhere to auto-pass
 
 init();

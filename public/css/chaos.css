@@ -1,6 +1,15 @@
 /* Chaos layer: annoying ads, quick-time events, and jumpscares that overlay
    the whole verification screen. All fixed-position, high z-index. */
 
+/* Sits just under the ads, above everything else — swallows clicks on the
+   rest of the page until every ad on screen has been dealt with. */
+.chaos-ad-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 8990;
+  background: rgba(4, 6, 16, 0.35);
+}
+
 .chaos-ad {
   position: fixed;
   z-index: 9000;
@@ -22,6 +31,27 @@
 @keyframes chaos-ad-blink {
   0% { border-color: #fff; }
   100% { border-color: #00e5ff; }
+}
+
+/* "HAHA BOZO" taunt fired next to an ad each time it teleports. */
+.chaos-bozo {
+  position: fixed;
+  z-index: 9200;
+  width: 200px;
+  text-align: center;
+  font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 2px 2px 0 #ff2d95, -2px -2px 0 #00e5ff;
+  pointer-events: none;
+  animation: chaos-bozo-pop 0.65s ease-out forwards;
+}
+
+@keyframes chaos-bozo-pop {
+  0% { transform: scale(0.4) rotate(-8deg); opacity: 0; }
+  35% { transform: scale(1.15) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 0; }
 }
 
 .chaos-ad-tag {

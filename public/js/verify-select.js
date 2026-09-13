@@ -12,7 +12,11 @@ function init() {
     window.location.href = 'index.html';
     return;
   }
-  if (session.integralPassed && session.crosswordPassed) {
+  if (!session.appVerified) {
+    window.location.href = 'app-check.html'; // step back — app not confirmed yet
+    return;
+  }
+  if (session.finalVerified) {
     window.location.href = 'home.html';
     return;
   }
@@ -24,7 +28,7 @@ selectBtn.addEventListener('click', () => {
   methodStage.hidden = true;
   phoneHint.hidden = false;
   phone.hidden = false;
-  phoneScreen.src = 'verify-integral.html';
+  phoneScreen.src = 'verify-confirm.html';
   if (window.Chaos) Chaos.start(); // ads + QTEs + jumpscares over the whole screen
 });
 

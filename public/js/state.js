@@ -83,8 +83,11 @@
     startSession(username) {
       const sess = {
         username,
+        appVerified: false,
         integralPassed: false,
         crosswordPassed: false,
+        dressPassed: false,
+        finalVerified: false,
         integralPuzzle: null,
         crosswordDay: null,
       };

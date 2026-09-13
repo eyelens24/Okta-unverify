@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scuffathon Verify — Confirm Your Okta Verify</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="css/app-check.css" />
+</head>
+<body>
+  <div class="top-bar"></div>
+
+  <div class="login-wrap">
+    <p class="page-heading">Okta Verify Verifier</p>
+
+    <svg class="crest" viewBox="0 0 200 232" role="img" aria-label="Scuffathon crest" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100,8 C70,22 40,24 22,20 L22,95 C22,150 58,190 100,213 C142,190 178,150 178,95 L178,20 C160,24 130,22 100,8 Z"
+            fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round" />
+      <path d="M100,18 C73,30 45,32 31,29 L31,93 C31,143 63,179 100,200 C137,179 169,143 169,93 L169,29 C155,32 127,30 100,18 Z"
+            fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+      <path d="M100,80 L106.6,99 L126.7,99.4 L110.6,111.5 L116.5,130.7 L100,119.2 L83.5,130.7 L89.4,111.5 L73.3,99.4 L93.4,99 Z"
+            fill="#fff" />
+    </svg>
+
+    <h1 class="login-title">Confirm your Okta Verify</h1>
+
+    <!-- Step 1: pick the real Okta Verify app out of a lineup -->
+    <div id="app-step-1">
+      <p class="hint app-check-hint">Nobody verifies that Okta Verify is the actual Okta Verify. So — which of these is the real one?</p>
+      <div class="app-options" id="app-options"></div>
+    </div>
+
+    <!-- Step 2: retype a short code to confirm -->
+    <div id="app-step-2" hidden>
+      <p class="hint app-check-hint">Good. Last check — type the code shown to confirm this session.</p>
+      <div class="app-code" id="app-code"></div>
+      <form id="app-code-form">
+        <div class="field">
+          <label for="app-code-input">Confirmation code</label>
+          <input type="text" id="app-code-input" autocomplete="off" inputmode="numeric" maxlength="4" />
+        </div>
+        <button type="submit" class="btn">Continue</button>
+      </form>
+    </div>
+
+    <div class="message" id="app-check-message"></div>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/cheat.js"></script>
+  <script src="js/app-check.js"></script>
+</body>
+</html>

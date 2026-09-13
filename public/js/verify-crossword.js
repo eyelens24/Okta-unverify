@@ -186,12 +186,8 @@ function init() {
     navTop('index.html');
     return;
   }
-  if (!session.integralPassed) {
-    window.location.href = 'verify-integral.html'; // step back within the phone
-    return;
-  }
   if (session.crosswordPassed) {
-    navTop('home.html');
+    window.location.href = 'verify-integral.html'; // advance within the phone
     return;
   }
 
@@ -222,6 +218,13 @@ function fail(message) {
   }, 1800);
 }
 
+function passCrossword() {
+  AppState.updateSession({ crosswordPassed: true });
+  messageEl.textContent = 'Verified!';
+  messageEl.className = 'message success';
+  window.location.href = 'verify-integral.html'; // advance within the phone
+}
+
 submitBtn.addEventListener('click', () => {
   messageEl.textContent = '';
   messageEl.className = 'message';
@@ -238,14 +241,13 @@ submitBtn.addEventListener('click', () => {
   }
 
   if (Crossword.checkGrid(solutionPuzzle, grid)) {
-    AppState.updateSession({ crosswordPassed: true });
-    messageEl.textContent = 'Verified!';
-    messageEl.className = 'message success';
-    navTop('home.html'); // fully verified → take over the whole screen
+    passCrossword();
     return;
   }
 
   fail("That grid isn't quite right.");
 });
+
+if (window.CheatCode) CheatCode.arm(passCrossword); // type "solve" anywhere to auto-pass
 
 init();

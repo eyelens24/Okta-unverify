@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scuffathon Verify — Sign-in Request</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="card text-center">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">Okta UNVerify</div>
+    </div>
+
+    <div class="center-icon">&#128276;</div>
+    <h1>New sign-in request</h1>
+    <p class="subtitle">Requested for <strong id="confirm-user"></strong>. Tap Verify if this was you.</p>
+
+    <button id="verify-btn">Verify</button>
+    <button class="link-btn" id="deny-btn">This wasn't me</button>
+    <div class="message" id="confirm-message"></div>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/verify-confirm.js"></script>
+</body>
+</html>

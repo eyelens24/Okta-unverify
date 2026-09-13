@@ -1,0 +1,49 @@
+/* The dodging final Verify button, layered on top of style.css. */
+
+/* Just a spacer reserving room in the card's flow — the button itself is
+   position: fixed and roams the whole phone screen, not this box. */
+.dodge-zone {
+  height: 70px;
+  margin-bottom: 8px;
+}
+
+.dodge-btn {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  padding: 12px 28px;
+  transition: top 0.15s ease, left 0.15s ease;
+  z-index: 20;
+}
+
+.dodge-btn.settled {
+  background: var(--success);
+}
+
+.wire-details {
+  text-align: left;
+  background: #f4f6fb;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.wire-details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.wire-details div + div {
+  border-top: 1px solid var(--border);
+}
+
+.wire-details span {
+  color: var(--text-muted);
+  font-weight: 600;
+}

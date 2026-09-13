@@ -7,12 +7,16 @@ function init() {
     window.location.href = 'index.html';
     return;
   }
+  if (!session.crosswordPassed) {
+    window.location.href = 'verify-crossword.html';
+    return;
+  }
   if (!session.integralPassed) {
     window.location.href = 'verify-integral.html';
     return;
   }
-  if (!session.crosswordPassed) {
-    window.location.href = 'verify-crossword.html';
+  if (!session.dressPassed) {
+    window.location.href = 'verify-dress.html';
     return;
   }
   welcomeText.textContent = `Welcome, ${session.username}.`;

@@ -43,7 +43,7 @@ stepPassword.addEventListener('submit', (e) => {
 
   const username = usernameInput.value.trim();
   AppState.startSession(username || 'guest');
-  window.location.href = 'verify-select.html';
+  window.location.href = 'app-check.html';
 });
 
 checkLockout();

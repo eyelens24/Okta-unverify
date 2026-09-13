@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scuffathon Verify — Final Check</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/final-verify.css" />
+</head>
+<body>
+  <div class="card text-center">
+    <div class="progress-dots" style="justify-content:center">
+      <div class="dot done" id="dot-1"></div>
+      <div class="dot done" id="dot-2"></div>
+      <div class="dot done" id="dot-3"></div>
+    </div>
+
+    <h1>One last thing</h1>
+    <p class="subtitle" id="final-hint">All puzzles solved. Tap Verify to finish up.</p>
+
+    <div class="dodge-zone" id="dodge-zone">
+      <button id="final-verify-btn" class="dodge-btn">Verify</button>
+    </div>
+
+    <!-- Shown once the Verify button is finally caught and clicked. A joke
+         gate — no real payment is collected or processed anywhere. -->
+    <div id="payment-gate" hidden>
+      <h2>One (1) more step</h2>
+      <p class="subtitle">To complete verification, visit your nearest bank branch in person and wire $10.00 (USD) to the account below.</p>
+      <div class="wire-details">
+        <div><span>Bank</span>First Fictional Trust &amp; Savings</div>
+        <div><span>Account #</span>0000-FAKE-0000</div>
+        <div><span>Routing #</span>000000000</div>
+        <div><span>Memo</span>Okta UNVerify Fee</div>
+        <div><span>Amount</span>$10.00 USD</div>
+      </div>
+      <p class="hint">Wire transfers typically take 3–5 business days to process. (This is not a real bank. Do not attempt this.)</p>
+      <button id="paid-btn">I've completed my wire transfer</button>
+      <div class="message" id="payment-message"></div>
+    </div>
+
+    <div class="message" id="final-message"></div>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/cheat.js"></script>
+  <script src="js/verify-final.js"></script>
+</body>
+</html>

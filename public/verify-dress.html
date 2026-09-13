@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scuffathon Verify — Color Check</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dress.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="progress-dots">
+      <div class="dot done" id="dot-1"></div>
+      <div class="dot done" id="dot-2"></div>
+      <div class="dot active" id="dot-3"></div>
+    </div>
+
+    <div class="lives-row"><span class="label">Lives</span><span id="lives-display"></span></div>
+
+    <h1>One more thing</h1>
+    <p class="subtitle">Select every color you see in the image below.</p>
+
+    <img class="dress-img" src="img/blueblack.jpeg" alt="A striped dress" />
+
+    <div class="color-options" id="color-options">
+      <label class="color-option"><input type="checkbox" value="blue" /> Blue</label>
+      <label class="color-option"><input type="checkbox" value="black" /> Black</label>
+      <label class="color-option"><input type="checkbox" value="white" /> White</label>
+      <label class="color-option"><input type="checkbox" value="gold" /> Gold</label>
+    </div>
+
+    <button id="submit-btn">Verify</button>
+    <div class="message" id="dress-message"></div>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/cheat.js"></script>
+  <script src="js/lives.js"></script>
+  <script src="js/verify-dress.js"></script>
+</body>
+</html>
